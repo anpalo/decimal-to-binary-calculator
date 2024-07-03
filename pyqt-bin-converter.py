@@ -1,9 +1,7 @@
 import sys
-from PyQt5.QtCore import Qt
-
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, \
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, \
     QPushButton, QMessageBox, QTabWidget
-
 
 def dec_to_bin():
     try:
@@ -14,7 +12,6 @@ def dec_to_bin():
     except ValueError:
         QMessageBox.critical(tab1, "Invalid Input", "Please enter a valid base10 number with no decimal points.")
 
-
 def bin_to_dec():
     try:
         binary_str = bin_entry.text()
@@ -22,7 +19,6 @@ def bin_to_dec():
         dec_amount_label.setText(str(decimal_number))
     except ValueError:
         QMessageBox.critical(tab2, "Invalid Input", "Please enter a valid binary number.")
-
 
 def get_binary():
     try:
@@ -49,7 +45,6 @@ def get_binary():
     except ValueError:
         QMessageBox.critical(tab2, "Invalid Input", "Please enter a valid binary number.")
 
-
 app = QApplication(sys.argv)
 my_window = QMainWindow()
 my_window.setWindowTitle("Binary Converter")
@@ -72,7 +67,6 @@ tab3 = QWidget()
 my_notebook.addTab(tab1, "Base10 -> Binary")
 my_notebook.addTab(tab2, "Binary -> Base10")
 my_notebook.addTab(tab3, "Binary Addition")
-
 
 # Base10 to Binary Tab
 tab1_layout = QVBoxLayout(tab1)
@@ -149,7 +143,6 @@ calc_button3 = QPushButton("Calculate")
 calc_button3.clicked.connect(get_binary)
 tab3_layout.addWidget(calc_button3)
 
-
 # Apply custom tab button colors using style sheets
 my_notebook.setStyleSheet(
     "QTabBar::tab:selected {background-color: DarkSlateGray;} "
@@ -157,4 +150,4 @@ my_notebook.setStyleSheet(
 )
 
 my_window.show()
-sys.exit(app.exec_())
+sys.exit(app.exec())
